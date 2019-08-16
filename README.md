@@ -9,7 +9,7 @@ Copy the script to the location of your choice.  Change relevant options in the 
 ## Requirements
 * s3cmd - install via `sudo apt-get install s3cmd`
 or
-* gsutil - install via ????
+* gsutil - install via instructions below
 * Amazon S3 or Google Cloud Storage bucket with appropriate permissions
 * Properly configured .s3cfg file for AWS S3 usage.  Should just require setting the access_key and secret_key.  Can be completed with `s3cmd --comfigure`.  Should output file into `/opt/.s3cfg`
 * gsutil configuration.  Can be completed via `gcloud init`
