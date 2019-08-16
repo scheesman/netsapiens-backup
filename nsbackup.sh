@@ -30,9 +30,6 @@
 ########### Nothing to edit below this section ############
 ###########################################################
 
-# TODO Test
-# Todo Confirm program flow
-
 # Set default file permissions
  umask 177
 
