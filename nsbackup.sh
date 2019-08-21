@@ -9,7 +9,7 @@ source nsbackup.conf
 ################################################################################
 ########### Nothing to edit in this file.  All options are defined    ##########
 ########### in the nsbackup.conf file.  A sample file is provided in  ##########
-########### nsbackup.conf.sample.  Simply copy it to nsbackuo.conf    ##########
+########### nsbackup.conf.sample.  Simply copy it to nsbackup.conf    ##########
 ################################################################################
 
 # Set default file permissions
