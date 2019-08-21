@@ -64,7 +64,7 @@ then
 fi
 
 # Error out if db password is not set
-if [ "$user" = "" ]
+if [ "$password" = "" ]
 then
     echo -e "\e[91mError: DB password not set\e[39m"
     $logmsg "Error: DB password not set"
