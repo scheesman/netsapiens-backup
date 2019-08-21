@@ -4,7 +4,11 @@ Backup script to back up from NetSapiens to AWS S3 and Google Cloud Storage.  Sc
 File structure in the buckets will be organized by hostname and service type: `bucketname->hostname->Service_date.gz`
 
 ## Instructions
-Copy the script to the location of your choice.  Change relevant options in the script, such as user, password, .s3cfg location, storage type, etc.  Run script manually or via crontab.
+Copy the script to the location of your choice.  You can download the files from github, or `git clone` it.
+  
+Copy the `nsbackup.conf.sample` to `nsbackup.conf`, and change relevant options in it, such as user, password, bucket name, .s3cfg location, storage type, etc.  
+
+Run script manually or via [crontab](#crontab).
 
 ## Requirements
 * s3cmd - install via `sudo apt-get install s3cmd`
