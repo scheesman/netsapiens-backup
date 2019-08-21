@@ -1,34 +1,16 @@
 #!/bin/bash
 # Backs up NetSapiens files based on the article located at https://help.netsapiens.com/hc/en-us/articles/205235690-What-Commands-Should-I-Execute-For-Scheduled-Backups-
 #
-# Usage - Save file and call with the modules that needed to be backed up.
-# ie: s3backup.sh core cdr conference
+# Usage - Save file, set nsbackup.conf as needed, and call with the modules that needed to be backed up.
+# ie: nsbackup.sh core cdr conference
 
-# Database credentials
- user="" #db username
- password="" #db password
+source nsbackup.conf
 
-# Other options
- backup_path="/tmp" #location to same files to during backup/upload
- date=$(date +"%Y%m%d") # Sets data in yyyymmdd format (ie 20190815)
- hostname=`hostname -s` #hostname vs. fqdn with just `hostname`
- logmsg="/usr/bin/logger -t NSBACKUP[$$] "
-
-# Backup destination options
-# Currently Limited to AWS S3 and Google Cloud Storage
-# Choose one and uncomment it out
-
-# storage="s3" # Amazon S3 bucket
-# storage="gs" # Google Cloud Storage bucket
- bucket="" # new option for cross compatibility.
-
-# S3 options
- s3cfg="" #location of .s3cfg file
- s3bucket="" #S3 Bucket Name (legacy). This is for backwards compatibility and is not necessary in this version
-
-###########################################################
-########### Nothing to edit below this section ############
-###########################################################
+################################################################################
+########### Nothing to edit in this file.  All options are defined    ##########
+########### in the nsbackup.conf file.  A sample file is provided in  ##########
+########### nsbackup.conf.sample.  Simply copy it to nsbackuo.conf    ##########
+################################################################################
 
 # Set default file permissions
  umask 177
@@ -53,8 +35,8 @@ Valid services:
 
 # Begin runtime
 
-echo -e "\e[92mNetsapiens Backup Script\e[39m"
-echo -e "\e[92mSean Cheesman - https://github.com/scheesman\e[39m"
+echo -e "\e[96mNetsapiens Backup Script\e[39m"
+echo -e "\e[96mSean Cheesman - https://github.com/scheesman\e[39m"
 echo -e ""
 
 # Set bucket variable to s3bucket variable value if bucket is blank. s3bucket was previous option but the addition of
