@@ -159,6 +159,7 @@ while [ $# -gt 0 ]; do
       infile="sipbxdomain-cdr_${hostname}_${date}.sql"
       outfile="${infile}.gz"
       echo "Backing up Core Module CDRs (25 hours) to ${outfile} and moving to ${storageName}"
+      $logmsg "Backing up Core Module CDRs (25 hours) to ${outfile} and moving to ${storageName}"
       mysqldump SiPbxDomain cdr --user=${user} --password=${password}  --insert-ignore --where='cdr.time_release > DATE_SUB( UTC_TIMESTAMP( ) , INTERVAL 25 HOUR )' --result-file=${backup_path}/${infile}
       gzip -f ${backup_path}/${infile}
       backup $outfile
@@ -168,6 +169,7 @@ while [ $# -gt 0 ]; do
       infile="cdrdomain-cdr2last_${hostname}_${cdr2last}.sql"
       outfile="${infile}.gz"
       echo "Backing up previous month's CDR2 to ${outfile} and moving to ${storageName}"
+      $logmsg "Backing up previous month's CDR2 to ${outfile} and moving to ${storageName}"
       mysqldump CdrDomain ${cdr2last}_d ${cdr2last}_g ${cdr2last}_m ${cdr2last}_r ${cdr2last}_u --user=${user} --password=${password} --insert-ignore --result-file=${backup_path}/${infile}
       gzip -f ${backup_path}/${infile}
       backup $outfile
@@ -177,6 +179,7 @@ while [ $# -gt 0 ]; do
       infile="cdrdomain-cdr2_${hostname}_${cdr2current}.sql"
       outfile="${infile}.gz"
       echo "Backing up current CDR2 to ${outfile} and moving to ${storageName}"
+      $logmsg "Backing up current CDR2 to ${outfile} and moving to ${storageName}"
       mysqldump CdrDomain ${cdr2current}_d ${cdr2current}_g ${cdr2current}_m ${cdr2current}_r ${cdr2current}_u --user=${user} --password=${password} --insert-ignore --result-file=${backup_path}/${infile}
       gzip -f ${backup_path}/${infile}
       backup $outfile
@@ -185,6 +188,7 @@ while [ $# -gt 0 ]; do
       infile="messagingdomain_${hostname}_${date}.sql"
       outfile="${infile}.gz"
       echo "Backing up Messaging DB to ${outfile} and moving to ${storageName}"
+      $logmsg "Backing up Messaging DB to ${outfile} and moving to ${storageName}"
       mysqldump MessagingDomain --user=${user} --password=${password}  --insert-ignore --result-file=${backup_path}/${infile}
       gzip -f ${backup_path}/${infile}
       backup $outfile
@@ -193,6 +197,7 @@ while [ $# -gt 0 ]; do
       infile="conferencing_${hostname}_${date}.sql"
       outfile="${infile}.gz"
       echo "Backing up Conferencing Module to ${outfile} and moving to ${storageName}"
+      $logmsg "Backing up Conferencing Module to ${outfile} and moving to ${storageName}"
       mysqldump NcsDomain --user=${user} --password=${password}  --result-file=${backup_path}/${infile}
       gzip -f ${backup_path}/${infile}
       backup $outfile
@@ -201,6 +206,7 @@ while [ $# -gt 0 ]; do
       infile="ndp_${hostname}_${date}.sql"
       outfile="${infile}.gz"
       echo "Backing up Endpoints Module to ${outfile} and moving to ${storageName}"
+      $logmsg "Backing up Endpoints Module to ${outfile} and moving to ${storageName}"
       mysqldump NdpDomain --user=${user} --password=${password}  --ignore-table=NdpDomain.ndp_syslog --result-file=${backup_path}/${infile}
       gzip -f ${backup_path}/${infile}
       backup $outfile
@@ -208,6 +214,7 @@ while [ $# -gt 0 ]; do
     ndpfiles)
       outfile="ndp-files_${hostname}_${date}.tar.gz"
       echo "Backing up Endpoints Files to ${outfile} and moving to ${storageName}"
+      $logmsg "Backing up Endpoints Files to ${outfile} and moving to ${storageName}"
       tar -zcvf ${backup_path}/${outfile} /usr/local/NetSapiens/ndp/frm
       backup $outfile
       ;;
@@ -215,6 +222,7 @@ while [ $# -gt 0 ]; do
       infile="recording_${hostname}_${date}.sql"
       outfile="${infile}.gz"
       echo "Backing up Recording Module to ${outfile} and moving to ${storageName}"
+      $logmsg "Backing up Recording Module to ${outfile} and moving to ${storageName}"
       mysqldump LiCfDomain --user=${user} --password=${password}  --result-file=${backup_path}/${infile}
       gzip -f ${backup_path}/${infile}
       backup $outfile
