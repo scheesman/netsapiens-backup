@@ -170,7 +170,7 @@ while [ $# -gt 0 ]; do
       outfile="${infile}.gz"
       echo "Backing up previous month's CDR2 to ${outfile} and moving to ${storageName}"
       $logmsg "Backing up previous month's CDR2 to ${outfile} and moving to ${storageName}"
-      mysqldump CdrDomain ${cdr2last}_d ${cdr2last}_g ${cdr2last}_m ${cdr2last}_r ${cdr2last}_u --user=${user} --password=${password} --insert-ignore --result-file=${backup_path}/${infile}
+      mysqldump CdrDomain ${cdr2last}_d ${cdr2last}_g ${cdr2last}_m ${cdr2last}_r ${cdr2last}_u --user=${user} --password=${password} --insert-ignore  --force --result-file=${backup_path}/${infile}
       gzip -f ${backup_path}/${infile}
       backup $outfile
       ;;
